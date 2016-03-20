@@ -68,6 +68,15 @@ module.exports = function(app, io, config) {
                 username: '[SYSTEM]',
                 text: 'User "' + config.data.publicKeys[client.id].username + '" connected!'
             });
+
+            // Send new userlist
+            var userList = [];
+            for ( var i in config.data.publicKeys ) {
+                userList.push({
+                    username: config.data.publicKeys[i].username
+                });
+            }
+            io.sockets.emit('updateUserList', userList);
         });
 
         // Sends a list of connected clients
@@ -102,6 +111,15 @@ module.exports = function(app, io, config) {
 
                 delete config.data.publicKeys[client.id];
                 delete config.data.clients[client.id];
+
+                // Send new userlist
+                var userList = [];
+                for ( var i in config.data.publicKeys ) {
+                    userList.push({
+                        username: config.data.publicKeys[i].username
+                    });
+                }
+                io.sockets.emit('updateUserList', userList);
             }
         });
     });

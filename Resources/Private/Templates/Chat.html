@@ -13,13 +13,19 @@
     </span>
 </div>
 
-<div class="chat container-fluid max-height" ng-show="ready">
-    <div class="messages row max-height">
-        <div class="col-xs-12">
+<div class="chat container-fluid" ng-show="ready">
+    <div class="messages row">
+        <div class="col-md-8">
             <ul id="messageList">
                 <li ng-repeat="message in messages" class="message {{message.type}}">
                     <strong>{{message.username}}:</strong> {{message.text}}
                 </li>
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <ul id="userList">
+                <li ng-repeat="user in users">{{user.username}}</li>
             </ul>
         </div>
     </div>

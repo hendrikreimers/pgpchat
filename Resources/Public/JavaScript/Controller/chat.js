@@ -13,6 +13,7 @@ angular.module('SecureChat').controller('Chat', ['$scope', '$http', 'Socket', fu
     $scope.formData = {};
     $scope.ready    = false;
     $scope.messages = [];
+    $scope.users    = [];
 
 
     $scope.sendMessage = function() {
@@ -29,6 +30,10 @@ angular.module('SecureChat').controller('Chat', ['$scope', '$http', 'Socket', fu
     // Receives a server message
     Socket.on('server_message', function(data) {
         pushMessage('server', data.username, data.text, false);
+    });
+
+    Socket.on('updateUserList', function(users) {
+        $scope.users = users;
     });
 
     // Decrypts a message
