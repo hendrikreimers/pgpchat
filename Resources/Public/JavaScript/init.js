@@ -1,0 +1,1 @@
+var secureChatModule = angular.module('SecureChat', ['Services']);

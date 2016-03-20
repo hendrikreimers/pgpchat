@@ -1,0 +1,22 @@
+{
+  "name": "pgpchat",
+  "description": "Secure PGP Chat Demo",
+  "author": {
+    "name": "Hendrik Reimers (KERN23)",
+    "email": "kontakt@kern23.de"
+  },
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "*",
+    "ejs": "*",
+    "http": "*",
+    "path": "*",
+    "socket.io": "*",
+    "body-parser": "*",
+    "crypto": "*"
+  }
+}

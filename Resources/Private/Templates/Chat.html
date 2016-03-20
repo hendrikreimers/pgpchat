@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de" ng-app="SecureChat">
+<head>
+<%- include('../Partials/_Head.html') %>
+</head>
+<body ng-controller="Chat" ng-cloak>
+
+<div class="init info" ng-show="!ready">
+    <span class="glyphicon glyphicon-refresh gly-spin"></span>
+    <span>
+        Generating your Private and Public Key!<br>
+        <strong>This may take a while...</strong>
+    </span>
+</div>
+
+<div class="chat container-fluid max-height" ng-show="ready">
+    <div class="messages row max-height">
+        <div class="col-xs-12">
+            <ul id="messageList">
+                <li ng-repeat="message in messages" class="message {{message.type}}">
+                    <strong>{{message.username}}:</strong> {{message.text}}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="message-input row">
+        <div class="col-xs-12">
+            <form class="form-inline" ng-submit="sendMessage()">
+                <div class="form-group">
+                    <label class="sr-only" for="Message">Message</label>
+                    <input type="text" class="form-control" placeholder="Enter your message" ng-model="formData.message">
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    var token             = '<%= token %>',
+        username          = '<%= username %>',
+        maxMessagesToShow = '<%= maxMessages %>';
+</script>
+<%- include('../Partials/_Scripts.html') %>
+
+</body>
+</html>

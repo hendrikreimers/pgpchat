@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="de" ng-app="SecureChat">
+<head>
+<%- include('../Partials/_Head.html') %>
+</head>
+<body>
+
+<div class="login container-fluid">
+    <div class="row">
+        <div class="col-xs-12" ng-controller="Login" ng-cloak>
+
+            <h1>Secure PGP Chat Demo</h1>
+
+            <p class="info bg-danger" ng-show="error">
+                Wrong password or username, please try again!
+            </p>
+
+            <form class="text-center" ng-submit="processLogin()">
+                <div class="form-group">
+                    <label class="sr-only" for="Username">Username</label>
+                    <input type="text" class="form-control" placeholder="Enter Username" ng-model="formData.username">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="Passwort">Passwort</label>
+                    <input type="password" class="form-control" placeholder="Enter Password" ng-model="formData.password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<%- include('../Partials/_Scripts.html') %>
+
+</body>
+</html>
