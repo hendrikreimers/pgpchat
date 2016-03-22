@@ -115,7 +115,9 @@ angular.module('SecureChat').controller('Chat', ['$scope', '$http', 'Socket', fu
 
 
     // Push a message to the view
-    var pushMessage = function(messageType, user, msg, apply = true) {
+    var pushMessage = function(messageType, user, msg, apply) {
+        var doApply = ( apply === false ) ? false : true;
+
         // push the message
         $scope.messages.push({
             type: messageType,
@@ -127,7 +129,7 @@ angular.module('SecureChat').controller('Chat', ['$scope', '$http', 'Socket', fu
         $scope.messages = $scope.messages.slice(maxMessages * -1);
 
         // needs the scope to be updated?
-        if ( apply ) $scope.$apply();
+        if ( doApply ) $scope.$apply();
 
         // Scroll to bottom
         var element = document.getElementById("messageList");
